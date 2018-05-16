@@ -1,0 +1,4 @@
+port = 10001
+host = localhost
+user = pyuser
+dbname = pydb1
