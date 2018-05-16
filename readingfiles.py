@@ -19,7 +19,22 @@ def readfile2(dirname, indent=0):
         for filename in os.listdir('.'):
              readfile2(filename, indent + 1)
         os.chdir(oldir)
-        
 
+def read_config1(key):
+    with open('../../config.text') as f:
+        for line in f:
+            if line.startswith(key):
+                return line.split('=')[1].strip()
+
+def read_config(filename):
+    d = {}
+    with open(filename) as f:
+        for line in f:
+            try:
+                key, val = line.split('=')
+                d[key.strip()] = val.strip()
+            except ValueError:
+                pass
+    return d
 if __name__ == '__main__':
-    readfile2('/home/mark/Documents/course/python')
+    print read_config('../../config.text')
